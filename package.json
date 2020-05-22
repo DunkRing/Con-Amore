@@ -1,0 +1,19 @@
+{
+  "name": "con-amore",
+  "version": "1.0.0",
+  "description": "PBA Algoritme & datastrukture eksamensprojekt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DunkRing/Con-Amore.git"
+  },
+  "author": "Christoffer & Jonas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DunkRing/Con-Amore/issues"
+  },
+  "homepage": "https://github.com/DunkRing/Con-Amore#readme"
+}
