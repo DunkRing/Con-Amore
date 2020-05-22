@@ -1,12 +1,6 @@
 // https://levelup.gitconnected.com/finding-the-shortest-path-in-javascript-dijkstras-algorithm-8d16451eea34
-let graph = {
-	start: { A: 5, B: 2 },
-	A: { start: 1, C: 4, D: 2 },
-	B: { A: 8, D: 7 },
-	C: { D: 6, end: 3 },
-	D: { end: 1 },
-	end: {},
-};
+
+var methods = {};
 
 let shortestDistanceNode = (distances, visited) => {
 	let shortest = null;
@@ -21,7 +15,7 @@ let shortestDistanceNode = (distances, visited) => {
 	return shortest;
 };
 
-let findShortestPath = (graph, startNode, endNode) => {
+methods.findShortestPath = (graph, startNode, endNode) => {
 	// establish object for recording distances from the start node
 	let distances = {};
 	distances[endNode] = "Infinity";
@@ -87,9 +81,7 @@ let findShortestPath = (graph, startNode, endNode) => {
 	return results;
 };
 
-console.log(findShortestPath(graph, "start", "end"));
+exports.data = methods;
 
-console.log(findShortestPath(graph, "A", "B"));
 
-console.log(findShortestPath(graph, "A", "start"));
 
