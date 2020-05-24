@@ -123,6 +123,15 @@ methods.findShortestPath = (graph, startNode, endNode) => {
 
 
 # Konklussion & Refleksion 
-Kompleksister 
+Kompleksister (Big O notation)
+Netop når vi snakker algortimer, er komplektsistet et meget relavant spørgsnmål at stille sig selv, netop fordi det fastlægger hvor effektiv en algoritme er. Fx ved vi at en listes Big O notation er O(1), det bliver altså ikke bedre.
+- Hvor effektiv er Dijkstra Algorithm?
+--Time Complexity af Dijkstra's algoritme er (Adjacency List and Priority queue):
+Vores while loop kører lige så mange gange at der er vertexs der kan besøges, derfor giver det en run time på O(log V) (hvor V er vertex). Derudover skal vi pop og behandle hver vertex egde og opdatere den til besøgt, dette hvilket tager V tid over hele tiden, så det bliver for edges O(E log V) og for vertex  O(V log V) - Derfor er den totale run time for summeres op til at være Dijkstra Algorithmen: 
+O((v+e) log v)
+-- Og Space kompleksistiken svare til O(V) (V = vertexes) 
+
+
+
 
 Hvad hvis det bliver en stor graph, vil Dijkstra’s så stadig være skide go
