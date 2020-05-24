@@ -131,6 +131,8 @@ O((v+e) log v)
 
 ### Konklussion
 Ud fra vores forsøg, har vi kunne se at en fuld implementation af Dijkstra’s algortimen sagtens ville kunne være algoritemn bag rejseplanen, da det giver mening at have vertex som stationer, edges som tiden det tager at rejse fra en station til en anden og at den giver den hurtigste vej fra A til B som værende alle de station man skal igennem og den totale _cost_ det koster (totalt antal minutter)
-Dog må der være mere til algoritmen i og med rejseplanen giver dig flere forskellige løsninger til det samme problem. Fx hvis du skal fra Roskilde til København, har du ikke kun en mulighed, da muligheden afhænger af hvornår du tager af sted og om du ønsker, den rejse med mindst mulige skift. 
-Derfor er vores endelige konklussion at man sagtens ville kunne bruge Dijkstra’s algortimen, dog hvis det fulde potentielle skal leves op til (altså hvordan rejseplanen fungere i dag) skal den tilføjes nogle modifiktioner hertil. 
+
+Dog må der være mere til algoritmen bag rejseplanen i og med at den giver dig flere forskellige løsninger til det samme problem. Fx hvis du skal fra Roskilde til København H, får du ikke kun en mulighed, da muligheden afhænger af hvornår du tager af sted og om du ønsker den rejse med mindst mulige skift, derudover kan du tilføje hvor hurtigt du gå, hvilket får algoritmen til at vælge nogle andre afgange end hvis du bare har indstillingerne på default. 
+
+Derfor er vores endelige konklussion, at man sagtens ville kunne bruge Dijkstra’s algortimen til at replicere rejseplanen, dog hvis det fulde potentielle skal leves op til (altså hvordan rejseplanen fungere 100% i dag) mener at der skal tilføjes nogle modifiktioner hertil.
 
