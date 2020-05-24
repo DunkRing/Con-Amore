@@ -3,18 +3,18 @@
 Forfattere: Christoffer og Jonas
 
 **Introduktion**: 
-Vi har valgt at undersøge hvordan DBS har udviklet rejseplan til at give brugerene den hurtigste vej fra Station A til Station B.
+Vi har valgt at undersøge hvordan DSB har udviklet rejseplanen til at give brugerene den hurtigste vej fra Station A til Station B.
 For at begrænse vores projekt en anelse, har vi valgt at tage udgangspunkt i DSB's S-togs linjer. Derudover bruger vi data direkte fra rejseplanen ift. hvor lang tid der er mellem hver station.
 
 ![Billede af togrouterne](https://www.dsb.dk/globalassets/trafikinformation/kort/nyt-s-togskort-med-koge-nord.png) 
 
-**Problemstilling**: hvordan udregner rejseplanen den hurtigste vej fra A til B og hvilken algoritmer bruger de? 
-Ville det være optimalt at bruge Dijkstra’s algortimen til at løse denne problemstilling?
+**Problemstilling**: Ville det være optimalt at bruge Dijkstra’s algortimen til at replicere rejseplanen og finde den hurtigste vej fra A til B?
 
 
 # Graph glossary
 For at kunne søge den hurtigste vej frem, bliver vi nød til at have en speciel datastructur, nemlig Graph:
-Forklar graph principperne: 
+
+**Forklaring graph principperne:** 
 - **Vertex (Node)**: er de fundementale units som som udgør hovedparten af en graph *(sammen med egdes)*. 
 - **Edged**: Er hvad der forbinder graphens vertexs til hinanden, så vi får et netværk er connected vertexes.
 - **Weights**: Er en propperties der tilhører en edge, kunne være Cost, Distance, Tid m.m. som er den værdi det koster at gå fra en vertex til en anden (hvilket er essentiellet for at algortimer kan validere og lave MST's (**M**inimum **S**panning **T**rees)  Og finde *shortest path* via forskellige alogritmer. 
@@ -25,14 +25,14 @@ Forklar graph principperne:
 
 
 # Eksperiment / applikation 
-
-Vi har i undervisning stiftet bekendskab men en række shortest path algoritmer, såsom "Dijkstra’s algoritmen", som kan finde den korteste vej i en Graph datastruttur. 
- - for at svare på vores problemstilling har vi derfor implementeret Dijkstra’s for at se om vi kan opsætte en datastruktur og et program der simulere S-togs linjerne, ligesom rejseplanen.  
+ For at svare på vores problemstilling har vi implementeret Dijkstra’s Algoritme for at se om vi kan opsætte en datastruktur og et program der simulere S-togs linjerne, ligesom rejseplanen.  
 
 ## Opsætning 
 Først og fremmest skulle vi have oprettet vores graph, vi gik ud fra billedet i starten og så var det ellers bare at oprettes alle vores **Vertex** *(Stationerne)*, **egdes** *(hvilket station kender til hvem?)* og **weight** af hver egde *(tiden det tager at komme fra stationen til nabostationen)*.
 
-    Graph Creation
+**Graph Creation**
+> *javascript*
+> 
 	let  stationer = {
 	Hillerød:{
 	Allerød: 5
@@ -54,7 +54,71 @@ Step 5. den bedste vej bliver udvalgt ud fra SPT
 
 ###  Kode 
 
+> *javascript*
 
+```
+let  shortestDistanceNode = (distances,visited) => {
+	let  shortest = null;
+	
+	for (let  node  in  distances) {
+		let  currentIsShortest =
+			shortest === null || distances[node] < distances[shortest];
+		if (currentIsShortest && !visited.includes(node)) {
+			shortest = node;
+		}
+	}
+	return  shortest;
+};
+
+methods.findShortestPath = (graph, startNode, endNode) => {
+	let  distances = {};
+	distances[endNode] = "Infinity";
+	distances = Object.assign(distances, graph[startNode]);
+	
+	let  parents = { endNode:  null };
+	for (let  child  in  graph[startNode]) {
+		parents[child] = startNode;
+	}
+	
+	let  visited = [];
+	
+	let  node = shortestDistanceNode(distances, visited);
+	
+	while (node) {
+		let  distance = distances[node];
+		let  children = graph[node];
+		for (let  child  in  children) {
+			if (String(child) === String(startNode)) {
+				continue;
+			} else {
+				let  newdistance = distance + children[child];
+				if (!distances[child] || distances[child] > newdistance) {
+					distances[child] = newdistance;
+					parents[child] = node;
+				}
+			}
+		}
+		visited.push(node);
+		node = shortestDistanceNode(distances, visited);
+	}
+	
+	let  shortestPath = [endNode];
+	let  parent = parents[endNode];
+	while (parent) {
+		shortestPath.push(parent);
+		parent = parents[parent];
+	}
+	shortestPath.reverse();
+	
+	let  results = {
+		distance:  distances[endNode],
+		path:  shortestPath,
+	};
+	
+	return  results;
+};
+```
+    
 
 
 
