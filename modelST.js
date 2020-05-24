@@ -51,7 +51,8 @@ let stationer = {
     
     Hellerup:{
         Bernstorffsvej: 3,
-        Svanemøllen: 3    
+        Svanemøllen: 3,
+        Charlottenlund: 3    
     },
     
     Svanemøllen:{
@@ -87,7 +88,8 @@ let stationer = {
     
     Dybbelsbro:{
         KøbenhavnH: 2,
-        Sydhavn: 3
+        Sydhavn: 3,
+        Carlsberg: 3
     },
     
     Sydhavn:{
@@ -154,7 +156,8 @@ let stationer = {
     // Linje F Start
     Ryparken:{
         Svanemøllen: 3,
-        Bispebjerg: 2
+        Bispebjerg: 2,
+        Emdrup: 2,
     },
     
     Bispebjerg:{
@@ -179,7 +182,10 @@ let stationer = {
     
     Flintholm:{
         Grøndal: 2,
-        KBHallen: 2
+        KBHallen: 2,
+        Vanløse: 3,
+        PeterBangsVej: 2,
+        Valby: 4
     },
     
     KBHallen:{
@@ -194,7 +200,10 @@ let stationer = {
     
     Danshøj:{
         Ålholm: 1,
-        VigerslevAlle: 1
+        VigerslevAlle: 1,
+        Valby: 2,
+        Hvidovre: 2,
+        Glostrup: 5
     },
     
     VigerslevAlle:{
@@ -227,8 +236,221 @@ let stationer = {
     
     Køge:{
         Ølby:4
-    }
+    },
       //Linje E Slut 
+
+     // Linje B start
+    
+    Farum:{
+        Værløse: 4
+    },
+
+    Værløse:{
+        Farum: 4,
+        Hareskov: 3
+    },
+
+    Hareskov:{
+        Værløse: 3,
+        Skovbrynet: 2
+    },
+
+    Skovbrynet:{
+        Hareskov: 2,
+        Bagsværd: 2
+    },
+
+    Bagsværd:{
+        Skovbrynet: 2,
+        Stengården: 2
+    },
+
+    Stengården:{
+        Bagsværd: 2,
+        Buddinge: 3
+    },
+
+    Buddinge:{
+        Stengården: 3,
+        Kildebakke: 2
+    },
+
+    Kildebakke:{
+        Buddinge: 2,
+        Vangede: 2
+    },
+
+    Vangede:{
+        Kildebakke: 2,
+        Dyssegård: 1
+    },
+
+    Dyssegård:{
+        Vangede: 1,
+        Emdrup: 3
+    },
+
+    Emdrup:{
+        Dyssegård: 3,
+        Ryparken: 2
+    },
+
+    Carlsberg:{
+        Dybbelsbro: 3,
+        Valby: 2
+    },
+
+    Valby:{
+        Carlsberg: 2,
+        Danshøj: 2,
+        Langgade: 2,
+        Flintholm: 4
+    },
+
+    Hvidovre:{
+        Danshøj: 2,
+        Rødovre: 2
+    },
+
+    Rødovre:{
+        Hvidovre: 2,
+        BrøndbyØster: 1
+    },
+
+    BrøndbyØster:{
+        Rødovre: 1,
+        Glostrup: 3
+    },
+
+    Glostrup:{
+        BrøndbyØster: 3,
+        Albertslund: 3,
+        Danshøj: 5
+    },
+
+    Albertslund:{
+        Glostrup: 3,
+        Taastrup: 3
+    },
+
+    Taastrup:{
+        Albertslund: 3,
+        HøjeTaastrup: 3
+    },
+
+    HøjeTaastrup:{
+        Taastrup: 3
+    },
+
+    // Linje B Slut
+
+    // Linje C Start
+
+    Frederiksund:{
+        Ølstykke: 5
+    },
+
+    Ølstykke:{
+        Frederiksund: 5,
+        Egedal: 2
+    },
+
+    Egedal:{
+        Ølstykke: 2,
+        Stenløse: 2
+    },
+
+    Stenløse:{
+        Egedal: 2,
+        Veksø: 3
+    },
+
+    Veksø:{
+        Stenløse: 3,
+        Kildedal: 3,
+        Målev: 4
+    },
+
+    Kildedal:{
+        Veksø: 3,
+        Målev: 2
+    },
+
+    Målev:{
+        Kildedal: 2,
+        Ballerup: 4,
+        Veksø: 4
+    },
+
+    Ballerup:{
+        Målev: 4,
+        Malmparken: 2
+    },
+
+    Malmparken:{
+        Ballerup: 2,
+        Skovlunde: 2,
+        Herlev: 4
+    },
+
+    Skovlunde:{
+        Malmparken: 2,
+        Herlev: 2
+    },
+
+    Herlev:{
+        Skovlunde: 2,
+        Husum: 2,
+        Malmparken: 4,
+        Vanløse: 5
+    },
+
+    Husum:{
+        Herlev: 2,
+        Islev: 2
+    },
+
+    Islev:{
+        Husum: 2,
+        Jyllingevej: 2
+    },
+
+    Jyllingevej:{
+        Islev: 2,
+        Vanløse: 2
+    },
+
+    Vanløse:{
+        Jyllingevej: 2,
+        Flintholm: 3,
+        Herlev: 5
+    },
+
+    PeterBangsVej:{
+        Flintholm: 2,
+        Langgade: 2
+    },
+
+    Langgade:{
+        PeterBangsVej: 2,
+        Valby: 2
+    },
+
+    Charlottenlund:{
+        Hellerup: 3,
+        Ordrup: 2,
+    },
+
+    Ordrup:{
+        Charlottenlund: 2,
+        Klampenborg: 3
+    },
+
+    Klampenborg:{
+        Ordrup: 3
+    }
+
+    // Linje C Slut
 };
 
 module.exports.stationer = stationer;
