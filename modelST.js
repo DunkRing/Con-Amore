@@ -127,7 +127,8 @@ let stationer = {
     
     Ishøj:{
         Vallensbæk: 3,
-        Hundige: 2
+        Hundige: 2,
+        NyEllebjerg: 9
     },
     
     Hundige:{
@@ -146,7 +147,8 @@ let stationer = {
     },
     
     SolrødStrand:{
-        Karlslunde: 4
+        Karlslunde: 4,
+        Jersie: 2
     },
     // Linje A Slut
     // Linje F Start
@@ -203,8 +205,30 @@ let stationer = {
     NyEllebjerg:{
         VigerslevAlle: 3,
         Sjælør: 2,
-        Åmarken: 2
+        Åmarken: 2,
+        Ishøj: 9
+    },
+
+    //Linje E start 
+    Jersie:{
+        SolrødStrand: 2,
+        KøgeNord: 3
+    },
+
+    KøgeNord:{
+        Ølby: 2,
+        Jersie: 3,
+    },
+
+    Ølby:{
+        Køge: 4, 
+        KøgeNord: 2
+    },
+    
+    Køge:{
+        Ølby:4
     }
+      //Linje E Slut 
 };
 
 module.exports.stationer = stationer;
