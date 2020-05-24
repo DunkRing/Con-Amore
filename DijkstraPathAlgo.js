@@ -82,6 +82,3 @@ methods.findShortestPath = (graph, startNode, endNode) => {
 };
 
 exports.data = methods;
-
-
-

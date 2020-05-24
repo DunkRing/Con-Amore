@@ -1,3 +1,4 @@
+const stationer = require('./modelST.js');
 
 let graph = {
 	start: { A: 5, B: 2 },
