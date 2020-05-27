@@ -1,4 +1,3 @@
-// https://levelup.gitconnected.com/finding-the-shortest-path-in-javascript-dijkstras-algorithm-8d16451eea34
 
 var methods = {};
 
