@@ -120,9 +120,19 @@ methods.findShortestPath = (graph, startNode, endNode) => {
 ```
     
 
-
-
 # Konklussion & Refleksion 
-Kompleksister 
+### Kompleksister (Big O notation)
+Netop når vi snakker algortimer, er komplektsistet et meget relavant spørgsnmål at stille sig selv, netop fordi det fastlægger hvor effektiv en algoritme er. Fx ved vi at en listes Big O notation er O(1), det bliver altså ikke bedre.
+- Hvor effektiv er Dijkstra Algorithm?
+-Time Complexity af Dijkstra's algoritme er (Adjacency List and Priority queue):
+Vores while loop kører lige så mange gange at der er vertexs der kan besøges, derfor giver det en run time på O(log V) (hvor V er vertex). Derudover skal vi pop og behandle hver vertex egde og opdatere den til besøgt, dette hvilket tager V tid over hele tiden, så det bliver for edges O(E log V) og for vertex  O(V log V) - Derfor er den totale run time for summeres op til at være Dijkstra Algorithmen: 
+O((v+e) log v)
+-Og Space kompleksistiken svare til O(V) (V = vertexes) 
 
-Hvad hvis det bliver en stor graph, vil Dijkstra’s så stadig være skide go
+### Konklussion
+Ud fra vores forsøg, har vi kunne se at en fuld implementation af Dijkstra’s algortimen sagtens ville kunne være algoritemn bag rejseplanen, da det giver mening at have vertex som stationer, edges som tiden det tager at rejse fra en station til en anden og at den giver den hurtigste vej fra A til B som værende alle de station man skal igennem og den totale _cost_ det koster (totalt antal minutter)
+
+Dog må der være mere til algoritmen bag rejseplanen i og med at den giver dig flere forskellige løsninger til det samme problem. Fx hvis du skal fra Roskilde til København H, får du ikke kun en mulighed, da muligheden afhænger af hvornår du tager af sted og om du ønsker den rejse med mindst mulige skift, derudover kan du tilføje hvor hurtigt du gå, hvilket får algoritmen til at vælge nogle andre afgange end hvis du bare har indstillingerne på default. 
+
+Derfor er vores endelige konklussion, at man sagtens ville kunne bruge Dijkstra’s algortimen til at replicere rejseplanen, dog hvis det fulde potentielle skal leves op til (altså hvordan rejseplanen fungere 100% i dag) mener at der skal tilføjes nogle modifiktioner hertil.
+
