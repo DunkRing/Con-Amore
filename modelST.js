@@ -1,5 +1,5 @@
 
-let stationer = {
+var stationer = {
     Hillerød:{
         Allerød: 5
     },
