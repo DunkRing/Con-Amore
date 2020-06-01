@@ -70,53 +70,60 @@ let  shortestDistanceNode = (distances,visited) => {
 	return  shortest;
 };
 
-methods.findShortestPath = (graph, startNode, endNode) => {
-	let  distances = {};
-	distances[endNode] = "Infinity";
-	distances = Object.assign(distances, graph[startNode]);
-	
-	let  parents = { endNode:  null };
-	for (let  child  in  graph[startNode]) {
-		parents[child] = startNode;
-	}
-	
-	let  visited = [];
-	
-	let  node = shortestDistanceNode(distances, visited);
-	
-	while (node) {
-		let  distance = distances[node];
-		let  children = graph[node];
-		for (let  child  in  children) {
-			if (String(child) === String(startNode)) {
-				continue;
-			} else {
-				let  newdistance = distance + children[child];
-				if (!distances[child] || distances[child] > newdistance) {
-					distances[child] = newdistance;
-					parents[child] = node;
-				}
-			}
-		}
-		visited.push(node);
-		node = shortestDistanceNode(distances, visited);
-	}
-	
-	let  shortestPath = [endNode];
-	let  parent = parents[endNode];
-	while (parent) {
-		shortestPath.push(parent);
-		parent = parents[parent];
-	}
-	shortestPath.reverse();
-	
-	let  results = {
-		distance:  distances[endNode],
-		path:  shortestPath,
-	};
-	
-	return  results;
-};
+Dijkstra(start, finish){
+		  const nodes = new PriorityQueue();
+		  const distances = {};
+		  const previous = {};
+		  let path = [] //to return at end
+		  let smallest;
+		  //build up initial state
+		  for(let vertex in this.adjacencyList){
+			  if(vertex === start){
+				  distances[vertex] = 0;
+				  nodes.enqueue(vertex, 0);
+			  } else {
+				  distances[vertex] = Infinity;
+				  nodes.enqueue(vertex, Infinity);
+			  }
+			  previous[vertex] = null;
+		  }
+		  // as long as there is something to visit
+		  while(nodes.values.length){
+			  smallest = nodes.dequeue().val;
+			  console.log("smallest node i priority queue: " + smallest);
+			  if(smallest === finish){
+				  //No more nodes to visit.
+				  //BUILD UP PATH TO RETURN
+				  while(previous[smallest]){
+					  path.push(smallest);
+					  smallest = previous[smallest];
+				  }
+				  break;
+			  } 
+			  if(smallest || distances[smallest] !== Infinity){
+				  for(let neighbor in this.adjacencyList[smallest]){
+					  //find neighboring nodes
+					  let nextNode = this.adjacencyList[smallest][neighbor];
+					  //calculate new distance to neighboring node
+					  let candidate = distances[smallest] + nextNode.weight;
+					  console.log("distance from start to neighbor node: " + candidate)
+					  let nextNeighbor = nextNode.node;
+					  if(candidate < distances[nextNeighbor]){
+						  //updating new smallest distance to neighbor
+						  distances[nextNeighbor] = candidate;
+						  //updating previous - How we got to neighbor
+						  previous[nextNeighbor] = smallest;
+						  //enqueue in priority queue with new priority
+						  nodes.enqueue(nextNeighbor, candidate);
+					  }
+				  }
+			  };
+		  };
+		 
+		  console.log("Shortest path: " + path.concat(smallest).reverse());
+		  return path.concat(smallest).reverse();     
+	  };
+  };
 ```
     
 
