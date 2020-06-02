@@ -5,8 +5,8 @@ var stationer = {
     },
     
     Allerød:{
-        Hillerød: 5,
-        Birkerød: 5
+    Hillerød: 5,
+    Birkerød: 5
     },
     
     Birkerød:{

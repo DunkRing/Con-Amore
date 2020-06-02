@@ -24,57 +24,62 @@ class WeightedGraph {
         if(!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
     }
     addEdge(vertex1,vertex2, weight){
-        this.adjacencyList[vertex1].push({node:vertex2,weight});
-        this.adjacencyList[vertex2].push({node:vertex1, weight});
+        this.adjacencyList[vertex1].push({stationName:vertex2, weight});
+        this.adjacencyList[vertex2].push({stationName:vertex1, weight});
     }
     Dijkstra(start, finish){
-        const nodes = new PriorityQueue();
-        const distances = {};
-        const previous = {};
-        let path = [] //to return at end
+        const nodes = new PriorityQueue();             // all the vertex in the graph.
+        const distances = {};                          // all the distances.
+        const previous = {};                           // how we got frem one node to another (spanning tree).
+        let path = []                                  // to return at the end.
         let smallest;
-        //build up initial state
+
+        //build up initial state of the algorithme 
         for(let vertex in this.adjacencyList){
             if(vertex === start){
-                distances[vertex] = 0;
-                nodes.enqueue(vertex, 0);
+                distances[vertex] = 0;                 // distance to the start node itself, which of course is 0.
+                nodes.enqueue(vertex, 0);              // adds to prioity queue with 0 because its the first node.
             } else {
-                distances[vertex] = Infinity;
-                nodes.enqueue(vertex, Infinity);
+                distances[vertex] = Infinity;          // all other disatnce is set to infinity.
+                nodes.enqueue(vertex, Infinity);       // all other vertex has the priority of inifity, later we dequeue nodes.
             }
-            previous[vertex] = null;
+            previous[vertex] = null;                   // =null because we hasn't visited any nodes yet.
         }
         // as long as there is something to visit
-        while(nodes.values.length){
-            smallest = nodes.dequeue().val;
-            if(smallest === finish){
+        while(nodes.values.length){                    // loops as long as there is anything to visit.
+            smallest = nodes.dequeue().val;            // dequeue the node with the lowest value (distance) (fordi sådan virker PriorityQueue) and  store the station name in variable: smallest
+            if(smallest === finish){                   // If smalles (new node to visit) is the endning node = we're of course done.
                 //WE ARE DONE
-                //BUILD UP PATH TO RETURN AT END
-                while(previous[smallest]){
-                    path.push(smallest);
-                    smallest = previous[smallest];
+                while(previous[smallest]){             // BUILD UP PATH TO RETURN AT END.
+                    path.push(smallest);               // smallest here will be vores endestation
+                    smallest = previous[smallest];     // for at bygge vores endelige liste må vi går igennem baglæns
                 }
                 break;
             } 
-            if(smallest || distances[smallest] !== Infinity){
-                for(let neighbor in this.adjacencyList[smallest]){
-                    //find neighboring node
-                    let nextNode = this.adjacencyList[smallest][neighbor];
+            //smallest = station navn
+            if(smallest || distances[smallest] !== Infinity){                 // 
+            for(let neighbor in this.adjacencyList[smallest]){                // adjacencyList[smallest] gives a list of the relations the node has (the neighbours).
+                    let nextNode = this.adjacencyList[smallest][neighbor];    // The first neighbor we look at.
+                  
                     //calculate new distance to neighboring node
-                    let candidate = distances[smallest] + nextNode.weight;
-                    let nextNeighbor = nextNode.node;
-                    if(candidate < distances[nextNeighbor]){
-                        //updating new smallest distance to neighbor
+                    let candidate = distances[smallest] + nextNode.weight;    // now we get the distance from start node to the neighboring we just vistining - er den samlede vægt (i vores tilfælde en disntace)
+                    let nextNeighbor = nextNode.stationName;                  // storing the station name in a variable, because we need it later. 
+                    //TEST:console.log("nextNeighbor" + nextNeighbor)              
+                    if(candidate < distances[nextNeighbor]){                  // compare if this candidate distance is less then what we have store in prevouis for the neighbor
+                        //updating new smallest distance to neighbor 
                         distances[nextNeighbor] = candidate;
                         //updating previous - How we got to neighbor
-                        previous[nextNeighbor] = smallest;
+                        previous[nextNeighbor] = smallest;                    // we want to know how we got from one node to anthoer which is what we're storing here, to make our path later
+                        
+                        //TEST: console.log("previous: " + previous[nextNeighbor])
                         //enqueue in priority queue with new priority
-                        nodes.enqueue(nextNeighbor, candidate);
+                        nodes.enqueue(nextNeighbor, candidate);              // add element to priority queue with a priority
                     }
                 }
             }
         }
-        return path.concat(smallest).reverse();     
+        //console.log(smallest)
+        return path.concat(smallest).reverse();   // concat(smallest) adds our start stations to the start of the path array    
     }
 }
 
@@ -102,5 +107,5 @@ stNames.forEach(st => {
     
 }); 
 
-//console.log(graph.Dijkstra("Hillerød", "Køge"));
-console.log(graph.adjacencyList);
+console.log(graph.Dijkstra("Hillerød", "Køge"));
+//console.log(graph.adjacencyList);
