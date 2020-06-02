@@ -93,8 +93,8 @@ class PriorityQueue {
     console.log(graph.Dijkstra("Rødby", "Ille"));
 
 
-//     graph.addVertex("Hillerød");
-//     graph.addVertex("Allerød");
+//  graph.addVertex("Hillerød");
+//  graph.addVertex("Allerød");
 // 	graph.addVertex("Birkerød");
 // 	graph.addVertex("Holte");
 // 	graph.addVertex("Virum");

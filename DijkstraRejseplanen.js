@@ -18,7 +18,7 @@ class PriorityQueue {
 
 class WeightedGraph {
     constructor() {
-        this.adjacencyList = {};
+        this.adjacencyList = {};  //adjacencyList unorden list of element that makes up the finite graph (A graph with a finite number of nodes and edges.)
     }
     addVertex(vertex){
         if(!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
@@ -30,7 +30,7 @@ class WeightedGraph {
     Dijkstra(start, finish){
         const nodes = new PriorityQueue();             // all the vertex in the graph.
         const distances = {};                          // all the distances.
-        const previous = {};                           // how we got frem one node to another (spanning tree).
+        const previous = {};                           // how we got frem one node to another (Shortest path tree).
         let path = []                                  // to return at the end.
         let smallest;
 
