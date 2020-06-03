@@ -157,7 +157,7 @@ stNames.forEach(st => {
     
 }); 
 
-console.log(graph.Dijkstra("Hillerød", "Køge"));
+console.log(graph.Dijkstra("Hillerød", "Gentofte"));
 
 
 

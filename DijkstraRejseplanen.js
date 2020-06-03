@@ -107,5 +107,6 @@ stNames.forEach(st => {
     
 }); 
 
-console.log(graph.Dijkstra("Hillerød", "Køge"));
+console.log(graph.Dijkstra("HøjeTaastrup", "Danshøj"));
+//console.log(graph.Dijkstra("SolrødStrand", "Frederiksund"));
 //console.log(graph.adjacencyList);
